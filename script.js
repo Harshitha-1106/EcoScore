@@ -1,6 +1,12 @@
+/* ================= GLOBAL SCORES ================= */
+let transportScore = 0;
+let plasticScore = 0;
+let electricityScore = 0;
+
+/* ================= TRANSPORT ================= */
 let selectedVehicle = "lorry";
 
-function selectVehicle(vehicle) {
+function selectVehicle(vehicle, event) {
   selectedVehicle = vehicle;
 
   // Update active button
@@ -24,20 +30,17 @@ function updateImpact() {
   if (!distance || distance <= 0) {
     impactText.textContent = "Low Impact";
     impactText.className = "text-success fw-semibold";
+    transportScore = 0;
     return;
   }
 
   let impactScore = 0;
 
-  if (selectedVehicle === "bike") {
-    impactScore = distance * 0.2;
-  } 
-  else if (selectedVehicle === "car") {
-    impactScore = distance * 1;
-  } 
-  else if (selectedVehicle === "lorry") {
-    impactScore = distance * 3; // High impact
-  }
+  if (selectedVehicle === "bike") impactScore = distance * 0.2;
+  else if (selectedVehicle === "car") impactScore = distance * 1;
+  else if (selectedVehicle === "lorry") impactScore = distance * 3;
+
+  transportScore = impactScore; // ✅ STORE TRANSPORT SCORE
 
   if (impactScore <= 5) {
     impactText.textContent = "Low Impact 🙂";
@@ -53,7 +56,7 @@ function updateImpact() {
   }
 }
 
-
+/* ================= PLASTIC ================= */
 const cards = document.querySelectorAll(".plastic-card");
 const totalImpactEl = document.getElementById("totalImpact");
 
@@ -64,6 +67,8 @@ function updateTotalImpact() {
     const count = parseInt(card.querySelector(".count").textContent);
     total += impact * count;
   });
+
+  plasticScore = total; // ✅ STORE PLASTIC SCORE
   totalImpactEl.textContent = total;
 }
 
@@ -86,6 +91,7 @@ cards.forEach(card => {
   });
 });
 
+/* ================= ELECTRICITY ================= */
 let selectedPower = 10;
 let hoursUsed = 1;
 let electricityTotal = 0;
@@ -106,7 +112,10 @@ applianceCards.forEach(card => {
   card.addEventListener("click", () => {
     applianceCards.forEach(c => c.classList.remove("active"));
     card.classList.add("active");
-    selectedPower = parseInt(card.querySelector(".appliance-power").textContent);
+
+    selectedPower = parseInt(
+      card.querySelector(".appliance-power").textContent
+    );
     powerInput.textContent = selectedPower;
     updateKwh();
   });
@@ -116,6 +125,7 @@ document.querySelectorAll(".hours-control button").forEach(btn => {
   btn.addEventListener("click", () => {
     if (btn.textContent === "+") hoursUsed++;
     else if (btn.textContent === "−" && hoursUsed > 1) hoursUsed--;
+
     hoursValue.textContent = hoursUsed;
     updateKwh();
   });
@@ -125,4 +135,35 @@ addBtn.addEventListener("click", () => {
   const currentKwh = (selectedPower * hoursUsed) / 1000;
   electricityTotal += currentKwh;
   electricityTotalEl.textContent = electricityTotal.toFixed(3);
+
+  electricityScore = electricityTotal * 5; // ✅ SCALE & STORE ELECTRICITY SCORE
 });
+
+/* ================= FINAL ECOSCORE ================= */
+document.getElementById("calculateTotal").addEventListener("click", () => {
+  updateFinalEcoScore();
+});
+
+function updateFinalEcoScore() {
+  const totalImpact = transportScore + plasticScore + electricityScore;
+
+  let ecoScore = Math.max(0, 100 - totalImpact);
+  ecoScore = Math.min(100, ecoScore);
+
+  document.getElementById("ecoScoreValue").textContent = ecoScore;
+
+  const suggestionEl = document.getElementById("ecoSuggestion");
+
+  if (ecoScore >= 80) {
+    suggestionEl.textContent = "🌱 Eco Champion! Excellent habits";
+    suggestionEl.className = "text-success fw-bold";
+  } 
+  else if (ecoScore >= 50) {
+    suggestionEl.textContent = "🙂 Eco Saver. Can improve";
+    suggestionEl.className = "text-warning fw-bold";
+  } 
+  else {
+    suggestionEl.textContent = "🚨 High Impact! Reduce usage";
+    suggestionEl.className = "text-danger fw-bold";
+  }
+}

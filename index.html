@@ -10,10 +10,8 @@
 
 
 <style>
- .logo { 
-    
+ .logo {  
    font-weight:500;
-   
   padding: 6px 12px;
   border-radius: 8px;
   background-color: #e6f4ec;
@@ -24,11 +22,10 @@
 </head>
 
 <body>
-    
-    <nav class="navbar navbar-expand-lg  bg-success p-3 text-dark bg-opacity-25">
+  <!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg  bg-success p-3 text-dark bg-opacity-25">
   <div class="container-fluid">
     <a class="navbar-brand text-success-emphasis bg-success-subtle rounded-2 px-3 logo" href="#">EcoScore</a>
-
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -37,15 +34,14 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
-       
+        <!-- RESOURCES -->
         <li class="nav-item dropdown">
          <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             Resources
              </button>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Documents</a></li>
-            <li><a class="dropdown-item" href="#">EcoScore Documents</a></li>
-           
+            <li><a class="dropdown-item" href="#">EcoScore Documents</a></li>  
           </ul>
         </li>
        
@@ -56,14 +52,59 @@
     <button class="btn btn-outline-success">Search</button>
   </form>
 
-  <button class="btn btn-success">Sign Up</button>
-</div>
+      <button class="btn btn-success">Sign Up</button>
+   </div>
 
-       
-       
     </div>
   </div>
+  <div>
+
+  </div>
 </nav>
+  <!-- ECOSCORE-IMAGE -->
+<div>
+    <img src="assests/ecoscore2.png" alt="EcoScore Image" class="hero-img">
+</div>
+   <!-- CARDS -->
+<div>
+    <!-- TRANSPORT-CARD-->
+    <div class="col-md-4">
+  <div class="transport-card card p-3 shadow-sm">
+
+    <h5 class="mb-3">🚲 Transport Distance</h5>
+
+    <!-- Vehicle Selection -->
+    <div class="vehicle mb-3">
+      <button class="btn btn-outline-success me-2" onclick="selectVehicle('walking')">Walking</button>
+      <button class="btn btn-outline-success me-2" onclick="selectVehicle('bike')">Bike</button>
+      <button class="btn btn-outline-success" onclick="selectVehicle('car')">Car</button>
+    </div>
+
+    <!-- Distance Input -->
+    <label class="form-label">Distance Travelled</label>
+    <div class="input-group mb-3">
+      <input type="number" class="form-control" id="distance" placeholder="Enter distance">
+      <span class="input-group-text">km</span>
+    </div>
+     <!-- Impact -->
+    <p class="text-success fw-semibold" id="impactText">
+      Very Low Impact
+    </p>
+  </div>
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>

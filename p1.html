@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Eco Dashboard</title>
+  <link rel="stylesheet" href="1.css">
+</head>
+<body>
+
+<div class="container">
+
+  <div class="box box1"></div>
+
+  <div class="box box2">
+    <div class="box-nav">
+      <span class="icon">♻️</span>
+      <div class="text">
+        <div class="title">Plastic Usage</div>
+        <div class="subtitle">Items used today</div>
+      </div>
+    </div>
+
+    <div class="plastic-grid">
+
+      <div class="plastic-card" data-impact="3">
+        <div class="emoji">🍟</div>
+        <div class="item-name">Chips Wrapper</div>
+        <div class="impact">Impact: 3</div>
+        <div class="counter">
+          <button class="btn minus">−</button>
+          <span class="count">0</span>
+          <button class="btn plus">+</button>
+        </div>
+      </div>
+
+      <div class="plastic-card" data-impact="5">
+        <div class="emoji">🧴</div>
+        <div class="item-name">Plastic Bottle</div>
+        <div class="impact">Impact: 5</div>
+        <div class="counter">
+          <button class="btn minus">−</button>
+          <span class="count">0</span>
+          <button class="btn plus">+</button>
+        </div>
+      </div>
+
+      <div class="plastic-card" data-impact="4">
+        <div class="emoji">🛍️</div>
+        <div class="item-name">Plastic Bag</div>
+        <div class="impact">Impact: 4</div>
+        <div class="counter">
+          <button class="btn minus">−</button>
+          <span class="count">0</span>
+          <button class="btn plus">+</button>
+        </div>
+      </div>
+
+      <div class="plastic-card" data-impact="6">
+        <div class="emoji">📦</div>
+        <div class="item-name">Plastic Box</div>
+        <div class="impact">Impact: 6</div>
+        <div class="counter">
+          <button class="btn minus">−</button>
+          <span class="count">0</span>
+          <button class="btn plus">+</button>
+        </div>
+      </div>
+
+      <div class="plastic-card" data-impact="3">
+        <div class="emoji">🍱</div>
+        <div class="item-name">Food Cover</div>
+        <div class="impact">Impact: 3</div>
+        <div class="counter">
+          <button class="btn minus">−</button>
+          <span class="count">0</span>
+          <button class="btn plus">+</button>
+        </div>
+      </div>
+
+      <div class="plastic-card" data-impact="8">
+        <div class="emoji">🚚</div>
+        <div class="item-name">Online Package</div>
+        <div class="impact">Impact: 8</div>
+        <div class="counter">
+          <button class="btn minus">−</button>
+          <span class="count">0</span>
+          <button class="btn plus">+</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="total">
+      Total Impact: <span id="totalImpact">0</span>
+    </div>
+  </div>
+
+  <div class="box box3">
+
+    <div class="box3-nav">
+      <span class="box3-icon">⚡</span>
+      <div class="box3-text">
+        <div class="box3-title">Electricity Usage</div>
+        <div class="box3-subtitle">Track your power consumption</div>
+      </div>
+    </div>
+
+    <div class="appliances-section">
+      <div class="section-title">Quick Add Appliances</div>
+
+      <div class="appliances-grid">
+        <div class="appliance-card active">
+          💡
+          <div class="appliance-name">LED Bulb</div>
+          <div class="appliance-power">10W</div>
+        </div>
+
+        <div class="appliance-card">
+          💻
+          <div class="appliance-name">Laptop</div>
+          <div class="appliance-power">50W</div>
+        </div>
+
+        <div class="appliance-card">
+          📺
+          <div class="appliance-name">TV</div>
+          <div class="appliance-power">100W</div>
+        </div>
+
+        <div class="appliance-card">
+          ❄️
+          <div class="appliance-name">AC</div>
+          <div class="appliance-power">1500W</div>
+        </div>
+
+        <div class="appliance-card">
+          🧊
+          <div class="appliance-name">Fridge</div>
+          <div class="appliance-power">150W</div>
+        </div>
+
+        <div class="appliance-card">
+          👕
+          <div class="appliance-name">Washing Machine</div>
+          <div class="appliance-power">500W</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="power-hours">
+      <div class="input-box">
+        <label>Power (Watts)</label>
+        <div class="input">10</div>
+      </div>
+
+      <div class="input-box">
+        <label>Hours Used</label>
+        <div class="hours-control">
+          <button>−</button>
+          <span>1</span>
+          <button>+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="calculated-box">
+      <div>
+        <div class="calc-title">Calculated Units</div>
+        <div class="calc-value">0.010 kWh</div>
+      </div>
+      <button class="add-btn">+ Add to Total</button>
+    </div>
+
+    <div class="electricity-total">
+      Total Bill: <span id="electricityTotal">0.000</span> kWh
+    </div>
+
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

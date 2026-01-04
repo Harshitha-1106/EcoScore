@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>EcoScore 🌱</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<nav class="navbar bg-white shadow-sm px-4">
+  <span class="navbar-brand fw-bold text-success">🌱 EcoScore</span>
+
+  <!-- 🔊 Voice Assistant Button (BEST PLACE: top-right, always accessible) -->
+  <button class="btn btn-outline-success" onclick="startVoice()">🎤 Eco Assistant</button>
+</nav>
+
+<div class="container my-4">
+
+  <!-- SCORE RING -->
+  <div class="score-card text-center mb-4">
+    <h2>Your Daily EcoScore</h2>
+
+    <div class="score-circle">
+      <span id="score">100</span>
+    </div>
+
+    <p id="feedback" class="fw-semibold mt-2">🌱 Eco Champion</p>
+
+    <button class="btn btn-success mt-2" onclick="saveProgress()">💾 Save Today's Progress</button>
+    <button class="btn btn-outline-danger mt-2" onclick="resetAll()">🔄 Reset</button>
+  </div>
+
+      <!-- 🔥 STREAK CARD (NEW) -->
+<div class=""mb-4">
+<div class="streak-card">
+  <div class="d-flex align-items-center gap-2">
+    <span class="streak-icon">🔥</span>
+    <div>
+        <div class="streak-count">
+            <span id="streakDays">1</span> day Eco Streak
+        </div>
+        <small class="text-muted">Keep logging daily to grow your streak</small>
+        </div>
+    </div>
+
+    <div class="progress mt-2">
+        <div
+            id="streakProgress"
+            class="progress-bar bg-success"
+            style="width: 14%"
+        ></div>
+    </div>
+
+        <small class="text-muted">Progress to 7-day streak</small>
+        </div>
+    </div>
+
+  <!-- INPUT CARDS -->
+  <div class="row g-4">
+
+    <!-- TRANSPORT -->
+    <div class="col-md-4">
+      <div class="card eco-card">
+        <h5>🚲 Transport</h5>
+
+        <select id="vehicle" class="form-select mb-2">
+          <option value="walking">Walking</option>
+          <option value="cycling">Cycling</option>
+          <option value="bike">Bike</option>
+          <option value="car">Car</option>
+        </select>
+
+        <input id="distance" type="number" class="form-control mb-2" placeholder="Distance (km)">
+        <button class="btn btn-success w-100" onclick="addTransport()">Add</button>
+      </div>
+    </div>
+
+    <!-- PLASTIC -->
+    <div class="col-md-4">
+      <div class="card eco-card">
+        <h5>♻ Plastic Items</h5>
+
+        <select id="plasticType" class="form-select mb-2">
+          <option value="0">None</option>
+          <option value="3">Chips Wrapper</option>
+          <option value="5">Plastic Bottle</option>
+          <option value="4">Plastic Bag</option>
+          <option value="6">Plastic Box</option>
+        </select>
+
+        <button class="btn btn-success w-100" onclick="addPlastic()">Add</button>
+      </div>
+    </div>
+
+    <!-- ELECTRICITY -->
+    <div class="col-md-4">
+      <div class="card eco-card">
+        <h5>⚡ Electricity</h5>
+
+        <select id="appliance" class="form-select mb-2">
+          <option value="0.01">LED Bulb (10W)</option>
+          <option value="0.05">Laptop</option>
+          <option value="0.1">TV</option>
+          <option value="1.5">AC</option>
+        </select>
+
+        <input id="hours" type="number" class="form-control mb-2" placeholder="Hours used">
+        <button class="btn btn-success w-100" onclick="addElectricity()">Add</button>
+      </div>
+    </div>
+
+    <!-- CATEGORY + ECO TIPS ROW -->
+<div class="row g-4 mt-2">
+
+  <!-- CATEGORY BREAKDOWN -->
+  <div class="col-md-6">
+    <div class="card breakdown-card">
+      <h5 class="card-title">📊 Category Breakdown</h5>
+
+      <div class="breakdown-item">
+        <div class="d-flex justify-content-between">
+          <span>🚲 Transport</span>
+          <span id="transportScore">100</span>
+        </div>
+        <div class="progress">
+          <div id="transportBar" class="progress-bar transport-bar"></div>
+        </div>
+      </div>
+
+      <div class="breakdown-item">
+        <div class="d-flex justify-content-between">
+          <span>♻ Plastic</span>
+          <span id="plasticScore">100</span>
+        </div>
+        <div class="progress">
+          <div id="plasticBar" class="progress-bar plastic-bar"></div>
+        </div>
+      </div>
+
+      <div class="breakdown-item">
+        <div class="d-flex justify-content-between">
+          <span>⚡ Electricity</span>
+          <span id="electricityScore">100</span>
+        </div>
+        <div class="progress">
+          <div id="electricityBar" class="progress-bar electricity-bar"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ECO TIPS -->
+  <div class="col-md-6">
+    <div class="card eco-tips-card">
+      <h5 class="card-title">💡 Eco Tips for You</h5>
+
+      <div class="eco-tip">
+        <span class="tip-icon">🌟</span>
+        <p id="ecoTipText">Click “Save Today” to get personalized eco tips.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEEKLY TREND -->
+<div class="row mt-4">
+  <div class="col-12">
+    <div class="card weekly-card">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h5 class="mb-0">📈 Weekly Trend</h5>
+        <span class="text-muted small">
+          Average: <strong id="weeklyAverage">100</strong>
+        </span>
+      </div>
+
+      <canvas id="weeklyChart" height="90"></canvas>
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

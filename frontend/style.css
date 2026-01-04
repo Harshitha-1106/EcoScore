@@ -1,0 +1,196 @@
+
+:root {
+    /* 🌿 COLORS */
+    --primary-green: #2ecc71;
+    --light-green: #f2fdf6;
+    --dark-green: #27ae60;
+    --text-dark: #2c3e50;
+    --text-light: #7f8c8d;
+    --card-bg: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.05);
+
+}
+/* 🌱 GLOBAL */
+body {
+  background: var(--light-green);
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* SCORE CARD */
+.score-card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 25px var(--shadow-color);
+}
+
+.score-circle {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 12px solid var(--primary-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
+  font-size: 40px;
+  font-weight: bold;
+  color: var(--primary-green);
+}
+
+/* INPUT CARDS */
+.eco-card {
+  padding: 20px;
+  border-radius: 18px;
+  border: none;
+  box-shadow: 0 8px 20px var(--shadow-color);
+}
+
+.eco-card h5 {
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+/* STREAK CARD */
+.streak-card {
+  background: var(--card-bg);
+  border-radius: 18px;
+  padding: 18px 22px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+  margin-bottom: 28px;
+}
+
+/* Fire icon */
+.streak-icon {
+  font-size: 26px;
+  line-height: 1;
+}
+
+/* Main streak text */
+.streak-count {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937; /* dark gray like screenshot */
+}
+
+/* Subtext */
+.streak-card small {
+  color: #6b7280; /* muted gray */
+  font-size: 13px;
+}
+
+/* Progress bar container */
+.streak-card .progress {
+  height: 6px;
+  background-color: #edf7f1;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Progress fill */
+.streak-card .progress-bar {
+  background-color: #22c55e; /* soft green from screenshot */
+  border-radius: 10px;
+  transition: width 0.4s ease;
+}
+
+/* ===============================
+   📊 CATEGORY BREAKDOWN CARD
+   =============================== */
+
+.breakdown-card {
+  padding: 22px;
+  border-radius: 18px;
+  border: none;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+}
+
+.breakdown-card .card-title {
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.breakdown-item {
+  margin-bottom: 16px;
+}
+
+.breakdown-item span {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.breakdown-item .progress {
+  height: 6px;
+  background-color: #edf7f1;
+  border-radius: 10px;
+  margin-top: 6px;
+}
+
+/* Individual colors to match screenshot */
+.transport-bar {
+  width: 100%;
+  background-color: #22c55e;
+}
+
+.plastic-bar {
+  width: 100%;
+  background-color: #3b82f6;
+}
+
+.electricity-bar {
+  width: 100%;
+  background-color: #f59e0b;
+}
+
+/* ===============================
+   💡 ECO TIPS CARD
+   =============================== */
+
+.eco-tips-card {
+  padding: 22px;
+  border-radius: 18px;
+  border: none;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+}
+
+.eco-tips-card .card-title {
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.eco-tip {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.tip-icon {
+  font-size: 20px;
+}
+
+.eco-tip p {
+  font-size: 14px;
+  color: #374151;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ===============================
+   📈 WEEKLY TREND CARD
+   =============================== */
+
+.weekly-card {
+  padding: 22px;
+  border-radius: 18px;
+  border: none;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+}
+
+.weekly-card h5 {
+  font-weight: 600;
+}
+
+.weekly-card canvas {
+  margin-top: 10px;
+}
